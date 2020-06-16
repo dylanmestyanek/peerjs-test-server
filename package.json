@@ -1,0 +1,16 @@
+{
+  "name": "peer-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "peer": "^0.5.3"
+  },
+  "scripts": {
+    "start": "PORT=5000 nodemon ./index"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
