@@ -16,13 +16,18 @@ peerServer.on("connection", ({ id }) => {
     host = id;
   }
 
-  connections = [id, ...connections];
+  connections = [...connections, id];
 });
 
 peerServer.on("disconnect", ({ id }) => {
-  connections = connections.filter((id) => connections.indexOf(id) !== 1);
-  if (host === id) {
-    host = connections[0];
+  if (connections.length > 1) {
+    connections = connections.filter((id) => connections.indexOf(id) !== 1);
+    if (host === id) {
+      host = connections[0];
+    }
+  } else if (!connections.length) {
+    host = null;
+    connections = [];
   }
 });
 
