@@ -20,12 +20,13 @@ peerServer.on("connection", ({ id }) => {
 });
 
 peerServer.on("disconnect", ({ id }) => {
+  connections = connections.filter((id) => connections.indexOf(id) !== 1);
+  console.log("CONNECTIONS I NSERVER", connections.length);
   if (connections.length > 1) {
-    connections = connections.filter((id) => connections.indexOf(id) !== 1);
     if (host === id) {
       host = connections[0];
     }
-  } else if (!connections.length) {
+  } else {
     host = null;
     connections = [];
   }
